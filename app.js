@@ -19,6 +19,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use( (req, res, next) => {
+  if (req.ip === '::ffff:10.61.245.89' || (process.env.ENV === 'dev' && req.ip === '::1')) {
+    next()
+  } else {
+    res.send(401, 'Unauthorized');
+  }
+})
 app.use(require('./routes'));
 
 
