@@ -20,6 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( (req, res, next) => {
+  console.log(req.ip)
+  console.log(process.env.ENV)
   if (req.ip === '::ffff:10.61.245.89' || (process.env.ENV === 'dev' && req.ip === '::1')) {
     next()
   } else {
