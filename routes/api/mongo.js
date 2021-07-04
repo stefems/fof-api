@@ -8,6 +8,7 @@ const client = new MongoClient(process.env.MONGO_URI, {
 });
 
 router.get("/checkCode", async (req, res, next) => {
+	console.log(req.ip)
 	try {
 		await client.connect();
 		const database = client.db('fof');
