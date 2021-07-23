@@ -1,8 +1,7 @@
 const bodyParser = require('body-parser');
 var express = require("express");
 var router = express.Router();
-// const generate = require('@nwlongnecker/adjective-adjective-animal');
-const { getCode, client } = require('../../util');
+const { getCode } = require('../../util');
 
 router.get("/checkCode", async (req, res, next) => {
 	try {
@@ -10,11 +9,9 @@ router.get("/checkCode", async (req, res, next) => {
 		if (match) {
 			res.send(match);
 		} else {
-			res.status(404);
-			res.send();
+			res.status(404).send();
 		}
 	} catch (e) {
-		console.log(e)
 		res.status(500).send();
 	}
 });

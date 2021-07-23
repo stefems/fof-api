@@ -10,6 +10,12 @@ const createPerson = async (person) => {
 		cardName: person.cardName,
 		email: person.email,
 		phone: person.phone,
+		hasCar: person.hasCar,
+		wheelDrive: person.wheelDrive,
+		wantsTocarpool: person.carpool,
+		carpoolAs: person.carpoolAs,
+		hasDietaryRestrictions: person.dietaryRestrictions,
+		dietDetails: person.dietDetails,
 	}
 	try {
 		const insertResponse = await people.insertOne(newPerson)
