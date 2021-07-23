@@ -14,10 +14,8 @@ router.post("/purchase", async (req, res, next) => {
 			// TODO TEST
 			res.status(403).send({ message: 'code invalid or already used'});
 		}
-		console.log(req.body)
 		const orderCreationResponseId = await createOrder(req.body.locationId, req.body.ticketCount)
 		const paymentCreationResponse = await createPayment(orderCreationResponseId, req.body.locationId, req.body.sourceId, req.body.verificationToken, req.body.ticketCount)
-		console.log(paymentCreationResponse)
 		const newCode = await createCode(req.body.person)
 		req.body.person.codes = [newCode.insertedId]
 		const newPerson = await createPerson(req.body.person)
