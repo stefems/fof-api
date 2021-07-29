@@ -17,6 +17,8 @@ router.get("/checkCode", async (req, res, next) => {
 });
 
 router.get("/canPurchase", async (req, res, next) => {
+	res.status(403);
+	res.send();
 	try {
 		const match = await getCode(req.query.code)
 		if (match && match.purchaser === '') {
